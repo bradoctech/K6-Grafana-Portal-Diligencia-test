@@ -17,7 +17,7 @@ jobs:
     steps:
       # Checkout do repositório
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Instalação do Chocolatey (gerenciador de pacotes no Windows)
       - name: Install Chocolatey
@@ -54,7 +54,7 @@ jobs:
       # Publica os resultados como artefato (opcional)
       - name: Upload K6 Results
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: k6-results
           path: .\results\k6-results\post-load-test-report.html
