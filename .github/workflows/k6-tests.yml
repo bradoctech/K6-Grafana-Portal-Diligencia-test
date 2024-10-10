@@ -38,7 +38,7 @@ jobs:
           name: k6-results
           path: ./results/k6-results/
 
-      # Notificação no GitHub sobre falha de testes
+      # Notificação no GitHub sobre falha de testes k6
       - name: Fail if test fails
         if: failure()
         run: exit 1

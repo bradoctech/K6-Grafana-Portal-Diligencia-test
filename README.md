@@ -35,7 +35,7 @@ Faz o checkout do código.
     Executa o script de teste.
     Carrega os resultados como artefatos, se bem-sucedido.
 
-## Relatórios de Performance
+## Relatórios de Performance k6
 
 Os relatórios de desempenho são gerados após a execução dos testes e podem ser visualizados diretamente como arquivos HTML. Você pode encontrar os relatórios na pasta results/k6-results/ ou baixá-los como artefatos do GitHub Actions.
 Métricas Monitoradas
