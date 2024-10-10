@@ -34,22 +34,22 @@ jobs:
       # Executa o teste de carga K6
       - name: Run K6 Load Test
         run: |
-          k6 run .\testes\load_test_Portal_Diligencia.js
+          k6 run .\tests\load_test_Portal_Diligencia.js
+
+      # Listar conteúdo do diretório de resultados
+      - name: List results directory
+        run: |
+          dir .\results\k6-results\
 
       # Verifica se o arquivo de relatório foi criado
       - name: Check if report file exists
         run: |
-          if (Test-Path -Path ./results/k6-results/post-load-test-report.html) {
+          if (Test-Path -Path .\results\k6-results\post-load-test-report.html) {
             Write-Host "Report file exists."
           } else {
             Write-Host "Report file does not exist."
             exit 1
           }
-
-      # Listar conteúdo do diretório de resultados
-      - name: List results directory
-        run: |
-          dir ./results/k6-results/
 
       # Publica os resultados como artefato (opcional)
       - name: Upload K6 Results
