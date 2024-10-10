@@ -12,23 +12,29 @@ on:
 # Definindo o ambiente de execução
 jobs:
   k6-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       # Checkout do repositório
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Instalação do Chocolatey (gerenciador de pacotes no Windows)
+      - name: Install Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; `
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
       # Instalação do K6
       - name: Install K6
         run: |
-          sudo apt-get update
-          sudo apt-get install -y k6
+          choco install k6 -y
 
       # Executa o teste de carga K6
       - name: Run K6 Load Test
         run: |
-          k6 run ./tests/load_test_Portal_Diligencia.js
+          k6 run .\tests\load_test_Portal_Diligencia.js
 
       # Publica os resultados como artefato (opcional)
       - name: Upload K6 Results
@@ -36,9 +42,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: k6-results
-          path: ./results/k6-results/
+          path: .\results\k6-results\
 
-      # Notificação no GitHub sobre falha de testes k6
+      # Notificação no GitHub sobre falha de testes K6
       - name: Fail if test fails
         if: failure()
         run: exit 1
