@@ -34,7 +34,7 @@ jobs:
       # Executa o teste de carga K6
       - name: Run K6 Load Test
         run: |
-          k6 run .\tests\load_test_Portal_Diligencia.js
+          k6 run .\testes\load_test_Portal_Diligencia.js
 
       # Listar conteúdo do diretório de resultados
       - name: List results directory
