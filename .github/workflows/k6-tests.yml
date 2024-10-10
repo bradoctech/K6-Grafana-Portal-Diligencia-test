@@ -25,24 +25,21 @@ jobs:
           Set-ExecutionPolicy Bypass -Scope Process -Force; `
           [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
           iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
       # Instalação do K6
       - name: Install K6
         run: |
           choco install k6 -y
-
       # Executa o teste de carga K6
       - name: Run K6 Load Test
         run: |
-          k6 run .\tests\load_test_Portal_Diligencia.js
-
-      # Publica os resultados como artefato (opcional)
+          k6 run .\testes\load_test_Portal_Diligencia.js
+       # Publica os resultados como artefato (opcional)
       - name: Upload K6 Results
         if: success()
         uses: actions/upload-artifact@v3
         with:
           name: k6-results
-          path: .\results\k6-results\
+          path: ./../results/k6-results/post-load-test-report.html
 
       # Notificação no GitHub sobre falha de testes K6
       - name: Fail if test fails

@@ -1,7 +1,4 @@
-*.html
 **/bin/
-reports/*
 node_modules/
-tests/*.json
-tests/*.html
-tests/*.xml
+
+
