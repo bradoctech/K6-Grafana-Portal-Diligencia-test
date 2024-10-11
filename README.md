@@ -26,9 +26,27 @@ Este projeto utiliza o K6 para realizar testes de performance na API do portal d
 
     k6 run load_test_Portal_Diligencia.js
 
+## Imagem Relatório de Execução
+
+  Aqui está um exemplo de relatório gerado após a execução dos testes:
+
+  ![Relatório K6](./assets/relatório_k6_run.png)
+
 ## rodando na nuvem (K6 Cloud)
    
      k6 cloud load_test_Portal_Diligencia.js
+
+## Imagem Relatório de Execução
+
+  Aqui está um exemplo de relatório no Grafana gerado após a execução dos testes:
+
+  ![Relatório K6](./assets/relatório_k6_cloud.png)
+
+## Imagem Relatório de Execução
+
+  Aqui está um exemplo de relatório via prompt comando gerado após a execução dos testes:
+
+  ![Relatório K6](./assets/image_cmd_k6.png)
 
 Faz o checkout do código.
     Instala o K6.
